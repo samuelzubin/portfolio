@@ -111,6 +111,16 @@ h1 {
     margin: 0 1.5%;
 }
 
+.social {
+    display: flex;
+    column-gap: 20px;
+}
+
+ion-icon {
+    font-size: 32px;
+    color:#26484ff6
+}
+
 a {
     text-decoration: none;
 }
