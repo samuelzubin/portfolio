@@ -1,0 +1,116 @@
+:root {
+    --NAVY: rgb(15, 50, 61);
+}
+
+body {
+    background-color: aliceblue;
+    font-family: "Helvetica"; /*Change later*/
+}
+
+h1 {
+    /* font-family: Helvetica; */
+    color: var(--NAVY);
+    font-size: 60px;
+    font-weight: lighter;
+    text-align: center;
+    margin-top: 8%;
+    margin-bottom: 8%;
+}
+
+.letter-s {
+    display: inline-block;
+    position: relative;
+    opacity: 0;
+    z-index: 2;
+    margin-left: -42px;
+    bottom: -0.5px;
+    animation: nameFadeIn 4s ease forwards;
+}
+
+.integral {
+    display: inline-block;
+    position: relative;
+    font-size: 27px;
+    z-index: 10;
+    bottom: 3px;
+    animation: firstLetterAnimation 4s ease forwards;
+}
+
+.letter-z {
+    display: inline-block;
+    position: relative;
+    opacity: 0;
+    z-index: 2;
+    margin-left: -35px;
+    bottom: -0.43px;
+    animation: nameFadeIn 4s ease forwards;
+}
+
+.blackboard-z {
+    display: inline-block;
+    position: relative;
+    font-size: 52px;
+    z-index: 10;
+    bottom: -7.5px;
+    animation: firstLetterAnimation 4s ease forwards;
+}
+
+@keyframes nameFadeIn {
+    0%, 84% {opacity: 0; transform: translateX(8px) translateY(-14px);}
+    100% {opacity: 1;}
+}
+
+@keyframes firstLetterAnimation {
+    0% {opacity: 0; transform: translateY(-20px);}
+    28% {opacity: 1; transform: translateY(-7px);}
+    29%, 75% {opacity: 1; transform: translateY(-7px);}
+    87%, 100% {opacity: 0; transform: translateX(-4px);}
+}
+
+.nav-bar {
+    display: flex;
+    border-radius: 8px 8px 0 0;
+    background-color: #000204;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.4);
+}
+
+.nav-section {
+    display: flex;
+    border-radius: 8px;
+    justify-content: center;
+    align-items: center;
+    color: var(--NAVY);
+    padding: 0px 30px;
+    
+}
+
+.nav-text {
+    font-family: "Helvetica";
+    color: white;
+}
+
+.nav-section:hover {
+    transition: 0.25s;
+    background-color: #555e66cd;
+}
+
+.card {
+    border: 1px solid black;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 3px 8px 5px rgba(0, 0, 0, 0.4);
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    background-color: bisque;
+}
+
+.section {
+    margin: 0 1.5%;
+}
+
+a {
+    text-decoration: none;
+}
