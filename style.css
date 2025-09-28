@@ -1,10 +1,12 @@
 :root {
     --NAVY: rgb(15, 50, 61);
+    --ICON-COLOR: white; /*#26484ff6*/
 }
 
 body {
-    background-color: aliceblue;
+    background-color: #c9e4ca;/*aliceblue;*/
     font-family: "Helvetica"; /*Change later*/
+    color: white;
 }
 
 h1 {
@@ -70,7 +72,7 @@ h1 {
 .nav-bar {
     display: flex;
     border-radius: 8px 8px 0 0;
-    background-color: #000204;
+    background-color: #2F3E46;
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.4);
 }
 
@@ -94,7 +96,7 @@ h1 {
     background-color: #555e66cd;
 }
 
-.card {
+.main-card {
     border: 1px solid black;
     border-radius: 8px;
     overflow: hidden;
@@ -104,21 +106,47 @@ h1 {
 .content {
     display: flex;
     flex-direction: column;
-    background-color: bisque;
+    background-color: #306b5c;/*rgba(13, 13, 56, 0.822);  bisque */
 }
 
 .section {
     margin: 0 1.5%;
 }
 
-.social {
+.project-card-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+@media (max-width: 800px) {
+    .project-card-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+.project-card {
+    padding: 1.8%;
+    margin: 1.2%;
+    position: relative;
+    display: inline-block;
+    border-radius: 14px;
+    background-color: #152731; /*rgb(26, 26, 46);*/
+    box-shadow: 1px 1px 7px #b4ffec;
+}
+
+.project-card:hover {
+    scale: 1.01;
+    transition: 0.3s ease;
+}
+
+.social-container {
     display: flex;
     column-gap: 20px;
 }
 
 ion-icon {
     font-size: 32px;
-    color:#26484ff6
+    color: var(--ICON-COLOR);
 }
 
 a {
