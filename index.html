@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Samuel Zubin's portfolio showcasing projects in electronics, Python, C++, and embedded systems.">
     <title>Samuel Zubin's Portfolio</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
@@ -21,14 +22,15 @@
         <div class="nav-bar">
             <a href="#projects"><div class="nav-section"><h3 class="nav-text">Projects</h3></div></a>
             <a href="#about"><div class="nav-section"><h3 class="nav-text">About</h3></div></a>
+            <a href="#social"><div class="nav-section"><h3 class="nav-text">Social</h3></div></a>
         </div>
         <div class="content">
             <div class="section" id="projects">
-                <h3 class="section-text">Projects</h3>
-                <p>
-                    Check out some of my latest projects!
-                </p>
-                <div class="project-card-container">
+                    <h3 class="section-text">Projects</h3>
+                    <p>
+                        Check out some of my latest projects!
+                    </p>
+                   <div class="project-card-container">
                     <div class="project-card">
                         <h4>Self-Balancing Robot</h4>
                         <ul>
@@ -72,45 +74,53 @@
                 </div>
             </div>
             <div class="section" id="about">
-                <div class="about-card">
-                    <div class="about-section" style="border-radius: 14px 14px 1px 1px; padding-top: 0; padding-bottom: 0;">
+                <div class="section-card">
+                    <div class="intro-section-card-header" style="border-radius: 14px 14px 1px 1px; padding-top: 0; padding-bottom: 0;">
                         <h4 class="about-intro">Hello, World!</h4>
                     </div>
-                    <div class="card about-section" style="border-radius: 1px 1px 1px 1px">
+                    <div class="card section-card-header" style="border-radius: 1px 1px 1px 1px">
                         <h2 class="about-name">Samuel Zubin</h2>
                         <p class="description">
                             Electronics Tinkerer, Calculus Enjoyer
                         </p>
                     </div>
-                    <div class="card about-section" style="border-radius: 1px;">
+                    <div class="card section-card-header" style="border-radius: 1px;">
                         <h2>Skills</h2>
                         <p class="description">
                             Python, C++, Verilog, ESP32, Circuit Design, HTML/CSS
                         </p>
                     </div>
-                    <div class="card about-section" style="border-radius: 1px 1px 14px 14px">
+                    <div class="card section-card-header" style="border-radius: 1px 1px 14px 14px">
                         <h2>Interests</h2>
                         <p class="description">
                             Embedded Systems, Wireless Communications, Calculus, Ultimate Frisbee, Rubik's Cubes
                         </p>
                     </div>
                 </div>
-                <div class="social-container">
-                    <div class="linkedin">
-                        <a href="https://www.linkedin.com/in/samuel-zubin-b21580379/" target="_blank" alt="LinkedIn">
-                            <ion-icon name="logo-linkedin"></ion-icon>
-                        </a>
-                    </div>
-                    <div class="github">
-                        <a href="https://github.com/samuelzubin" target="_blank" alt="GitHub">
-                            <ion-icon name="logo-github"></ion-icon>
-                        </a>
+            </div>
+            <div class="section" id="social">
+                <div class="section-card">
+                    <div class="section-card-header">
+                        <h1>Social</h1>
+                        <div class="social-container">
+                            <div>
+                                <a href="https://www.linkedin.com/in/samuel-zubin-b21580379/" target="_blank" alt="LinkedIn">
+                                    <ion-icon name="logo-linkedin"></ion-icon>
+                                </a>
+                            </div>
+                            <div>
+                                <a href="https://github.com/samuelzubin" target="_blank" alt="GitHub">
+                                    <ion-icon name="logo-github"></ion-icon>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+<!-- Loading icon library--> 
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>   <!-- move to separate file--> 
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 </html>

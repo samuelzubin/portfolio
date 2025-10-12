@@ -3,10 +3,20 @@
     --ICON-COLOR: white;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
     background-color: hsl(122, 33%, 84%);
     font-family: "Google Sans Code", Helvetica;
     color: white;
+}
+
+@font-face {
+  font-family: 'KaTeX_Main';
+  src: url('https://cdn.jsdelivr.net/.../KaTeX_Main-Regular.woff2') format('woff2');
+  font-display: swap;
 }
 
 .header {
@@ -24,16 +34,17 @@ body {
     opacity: 0;
     z-index: 2;
     margin-left: -42px;
-    bottom: -0.5px;
+    bottom: 0.1px;
     animation: nameFadeIn 4s ease forwards;
 }
 
 .integral {
     display: inline-block;
     position: relative;
-    font-size: 27px;
+    font-size: 45%;
     z-index: 10;
-    bottom: 3px;
+    bottom: 3.7px;
+    right: 1px;
     animation: firstLetterAnimation 4s ease forwards;
 }
 
@@ -75,6 +86,10 @@ body {
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.4);
 }
 
+.nav-bar:has(.nav-section:hover) .nav-section:not(.nav-section:hover) {
+    opacity: 0.2;
+}
+
 .nav-section {
     display: flex;
     border-radius: 8px;
@@ -82,16 +97,16 @@ body {
     align-items: center;
     color: var(--NAVY);
     padding: 0px 30px;
-    
+    transition: opacity 0.3s ease, scale 0.3s ease;
+}
+
+.nav-section:hover {
+    scale: 1.04;
+    transition: scale 0.2s;
 }
 
 .nav-text {
     color: white;
-}
-
-.nav-section:hover {
-    transition: 0.25s;
-    background-color: hsla(208, 9%, 37%, 0.804);
 }
 
 .main-card {
@@ -106,31 +121,37 @@ body {
     flex-direction: column;
     row-gap: 40px;
     background-color: hsl(165, 38%, 27%);
+    padding: 1em;
 }
 
 .section {
-    margin: 0 1.5%;
+    margin: 0 1%;
+    padding: 1%;
 }
 
 .project-card-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    gap: 2.4% 1.2%;
 }
 
 @media (max-width: 800px) {
+    .header {
+        scale: 0.7;
+    }
     .project-card-container {
         grid-template-columns: 1fr;
     }
 }
 
 .project-card {
-    padding: 1.8%;
-    margin: 1.2%;
+    padding: 1.3rem;
     position: relative;
     display: inline-block;
     border-radius: 14px;
     background-color: hsl(201, 40%, 14%);
     box-shadow: 1px 1px 7px #b4ffec;
+    transition: scale 0.2s;
 }
 
 .project-card:hover {
@@ -140,18 +161,8 @@ body {
 }
 
 li {
+    opacity: 0.6;
     margin-bottom: 3.5%;
-}
-
-.social-container {
-    display: flex;
-    column-gap: 20px;
-    margin: 2% 0 2% 0;
-}
-
-ion-icon {
-    font-size: 32px;
-    color: var(--ICON-COLOR);
 }
 
 a {
@@ -166,6 +177,8 @@ a {
     border-right: 2px solid white;
     display: inline-block;
     width: 0;
+    margin-top: 1.1em;
+    margin-bottom: 1.1em;
 }
 
 .about-intro.animate {
@@ -188,8 +201,7 @@ a {
     margin-top: 16px;
 }
 
-.about-card {
-    margin: 1.2%;
+.section-card {
     position: relative;
     display: block;
     border-radius: 14px;
@@ -201,12 +213,38 @@ a {
     opacity: 0.6;
 }
 
-.about-section {
+.intro-section-card-header {
+    padding: 0 1.8%;
+}
+
+.section-card-header {
     padding: 1.8%;
+}
+
+.card {
+    transition: scale 0.3s, background-color 0.3s;
 }
 
 .card:hover {
     scale: 1.0017;
     background-color:hsl(201, 20%, 23%);
+    transition: 0.2s;
+}
+
+.social-container {
+    display: flex;
+    column-gap: 2.3%;
+    margin-top: 2.7%;
+}
+
+ion-icon {
+    font-size: 2.9em;
+    color: var(--ICON-COLOR);
+    opacity: 0.6;
+    transition: scale 0.2s;
+}
+
+ion-icon:hover {
+    scale: 1.1;
     transition: 0.2s;
 }
