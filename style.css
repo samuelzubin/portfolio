@@ -19,6 +19,85 @@ body {
   font-display: swap;
 }
 
+@media (max-width: 800px) {
+    .header {
+        scale: 0.7;
+    }
+    .project-card-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+button {
+    border: none;
+    background-color: inherit;
+    cursor: pointer;
+}
+
+.menu-icon {
+    position: absolute;
+    display: block;
+    font-size: 3.5em;
+    color: var(--NAVY);
+    transition: transform 0.4s ease, scale 0.2s ease;
+}
+
+.menu-icon:hover {
+    transform: skewX(-10deg);
+    scale: 1.2;
+}
+
+#menu {
+    position: absolute;
+    visibility: hidden;
+    background-color: bisque;
+    padding: 1em 2em;
+    border-style: solid;
+    border-color: var(--NAVY);
+    border-radius: 0 14px 14px 0;
+    transform: translate(-130%, -5.4%);
+    transition: transform 1s ease;
+}
+
+#menu.open {
+    transform: translate(-7%, -5.4%);
+}
+
+.list-icon {
+    top: 10px;
+    left: 0.3em;
+}
+
+.menu-item {
+    color: var(--NAVY);
+    list-style-type: none;
+    line-height: 5em;
+    transition: opacity 0.3s ease, scale 0.3s ease;
+}
+
+#menu:has(.menu-item:hover) .menu-item:not(.menu-item:hover) {
+    opacity: 0.4;
+}
+
+.menu-item:hover {
+    scale: 1.04;
+    transition: scale 0.2s;
+}
+
+.nav-option {
+    display: flex;
+    align-items: center;
+}
+
+.nav-icon {
+    font-size: 1.5em;
+}
+
+.nav-text {
+    margin-left: 1em;
+    flex-grow: 5;
+}
+
 .header {
     color: var(--NAVY);
     font-size: 60px;
@@ -26,6 +105,16 @@ body {
     text-align: center;
     margin-top: 8%;
     margin-bottom: 8%;
+}
+
+.integral {
+    display: inline-block;
+    position: relative;
+    font-size: 45%;
+    z-index: 10;
+    bottom: 3.7px;
+    right: 1px;
+    animation: firstLetterAnimation 4s ease forwards;
 }
 
 .letter-s {
@@ -38,13 +127,12 @@ body {
     animation: nameFadeIn 4s ease forwards;
 }
 
-.integral {
+.blackboard-z {
     display: inline-block;
     position: relative;
-    font-size: 45%;
+    font-size: 52px;
     z-index: 10;
-    bottom: 3.7px;
-    right: 1px;
+    bottom: -7.5px;
     animation: firstLetterAnimation 4s ease forwards;
 }
 
@@ -58,20 +146,6 @@ body {
     animation: nameFadeIn 4s ease forwards;
 }
 
-.blackboard-z {
-    display: inline-block;
-    position: relative;
-    font-size: 52px;
-    z-index: 10;
-    bottom: -7.5px;
-    animation: firstLetterAnimation 4s ease forwards;
-}
-
-@keyframes nameFadeIn {
-    0%, 84% {opacity: 0; transform: translateX(8px) translateY(-14px);}
-    100% {opacity: 1;}
-}
-
 @keyframes firstLetterAnimation {
     0% {opacity: 0; transform: translateY(-20px);}
     28% {opacity: 1; transform: translateY(-7px);}
@@ -79,14 +153,19 @@ body {
     87%, 100% {opacity: 0; transform: translateX(-4px);}
 }
 
-.nav-bar {
-    display: flex;
+@keyframes nameFadeIn {
+    0%, 84% {opacity: 0; transform: translateX(8px) translateY(-14px);}
+    100% {opacity: 1;}
+}
+
+.content-bar {
+    height: 10vh;
     border-radius: 8px 8px 0 0;
     background-color: hsl(201, 20%, 23%);
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.4);
 }
 
-.nav-bar:has(.nav-section:hover) .nav-section:not(.nav-section:hover) {
+/* .nav-bar:has(.nav-section:hover) .nav-section:not(.nav-section:hover) {
     opacity: 0.2;
 }
 
@@ -103,11 +182,7 @@ body {
 .nav-section:hover {
     scale: 1.04;
     transition: scale 0.2s;
-}
-
-.nav-text {
-    color: white;
-}
+} */
 
 .main-card {
     border: 1px solid black;
@@ -135,15 +210,6 @@ body {
     gap: 2.4% 1.2%;
 }
 
-@media (max-width: 800px) {
-    .header {
-        scale: 0.7;
-    }
-    .project-card-container {
-        grid-template-columns: 1fr;
-    }
-}
-
 .project-card {
     padding: 1.3rem;
     position: relative;
@@ -160,14 +226,9 @@ body {
     background-color: hsl(200, 33%, 18%);
 }
 
-li {
+.project-card-description {
     opacity: 0.6;
     margin-bottom: 3.5%;
-}
-
-a {
-    color: inherit;
-    text-decoration: none;
 }
 
 .about-intro {
@@ -187,13 +248,17 @@ a {
         blink 0.4s step-end infinite alternate;
 }
 
+@keyframes typing {
+    from {width: 0;}
+    to {width: 13ch;}
+}
+
 @keyframes blink {
     50% {border-color: transparent;}
 }
 
-@keyframes typing {
-    from {width: 0;}
-    to {width: 13ch;}
+.intro-section-card-header {
+    padding: 0 1.8%;
 }
 
 .about-name {
@@ -211,10 +276,6 @@ a {
 
 .description {
     opacity: 0.6;
-}
-
-.intro-section-card-header {
-    padding: 0 1.8%;
 }
 
 .section-card-header {
@@ -237,14 +298,19 @@ a {
     margin-top: 2.7%;
 }
 
-ion-icon {
+.social-icon {
     font-size: 2.9em;
     color: var(--ICON-COLOR);
     opacity: 0.6;
     transition: scale 0.2s;
 }
 
-ion-icon:hover {
+.social-icon:hover {
     scale: 1.1;
     transition: 0.2s;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
 }
