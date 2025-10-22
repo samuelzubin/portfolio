@@ -8,7 +8,7 @@ html {
 }
 
 body {
-    background-color: hsl(122, 33%, 84%);
+    background-color: hsl(120, 9%, 94%);
     font-family: "Google Sans Code", Helvetica;
     color: white;
 }
@@ -57,6 +57,7 @@ button {
     border-radius: 0 14px 14px 0;
     transform: translate(-130%, -5.4%);
     transition: transform 1s ease;
+    z-index: 100;
 }
 
 #menu.open {
@@ -159,36 +160,16 @@ button {
 }
 
 .content-bar {
-    height: 10vh;
+    padding: 1.4em;
     border-radius: 8px 8px 0 0;
     background-color: hsl(201, 20%, 23%);
-    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.4);
 }
-
-/* .nav-bar:has(.nav-section:hover) .nav-section:not(.nav-section:hover) {
-    opacity: 0.2;
-}
-
-.nav-section {
-    display: flex;
-    border-radius: 8px;
-    justify-content: center;
-    align-items: center;
-    color: var(--NAVY);
-    padding: 0px 30px;
-    transition: opacity 0.3s ease, scale 0.3s ease;
-}
-
-.nav-section:hover {
-    scale: 1.04;
-    transition: scale 0.2s;
-} */
 
 .main-card {
     border: 1px solid black;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 3px 8px 5px rgba(0, 0, 0, 0.4);
+    box-shadow: 3px -3px 8px rgba(0, 0, 0, 1);
 }
 
 .content {
