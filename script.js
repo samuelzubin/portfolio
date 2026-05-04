@@ -1,38 +1,31 @@
 const intro = document.querySelector('.about-intro');
-const quote = document.querySelector('em')
-const quote_list = ["\"Tell me and I forget. Teach me and I may remember. Involve me and I learn.\"", 
-                    "\"When you change the way you look at things, the things you look at change.\"",
-                    "\"We are often so caught up with whether or not we could, that we don't stop to think if we should.\""
-                ]
+const quote = document.querySelector('em');
+const navToggle = document.getElementById('navToggle');
+const navMenu = document.getElementById('navMenu');
+const navLinks = document.querySelectorAll('.nav-link');
+
+const quote_list = [
+    "\"Tell me and I forget. Teach me and I may remember. Involve me and I learn.\"",
+    "\"When you change the way you look at things, the things you look at change.\"",
+    "\"We are often so caught up with whether or not we could, that we don't stop to think if we should.\""
+];
 let i = 0;
 
-let clicked = false;
-
 function toggleMenu() {
-    const menu = document.getElementById("menu");
-    
-    if (!clicked) {
-        menu.style.visibility = "visible";
-        menu.classList.add('open');
-        clicked = true;
-    }
-    
-    else {
-        menu.classList.remove('open');
-        clicked = false;
-    }
+    navToggle.classList.toggle('active');
+    navMenu.classList.toggle('active');
 }
 
 function closeMenu() {
-    clicked = true;
-    toggleMenu();
+    navToggle.classList.remove('active');
+    navMenu.classList.remove('active');
 }
 
 function changeQuote() {
-    quote.textContent = quote_list[0]
+    quote.textContent = quote_list[0];
     setInterval(() => {
-        i = i + 1
-        quote.textContent = quote_list[i % 3]
+        i = (i + 1) % quote_list.length;
+        quote.textContent = quote_list[i];
     }, 15000);
 }
 
@@ -48,7 +41,12 @@ function beginTyping() {
     }
 }
 
-setTimeout(changeQuote, 18000)
+navToggle.addEventListener('click', toggleMenu);
 
+navLinks.forEach(link => {
+    link.addEventListener('click', closeMenu);
+});
+
+setTimeout(changeQuote, 18000);
 window.addEventListener('scroll', beginTyping);
 beginTyping();
