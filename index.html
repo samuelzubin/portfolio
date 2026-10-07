@@ -3,8 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Samuel Zubin's portfolio showcasing projects in electronics, Python, C++, and embedded systems.">
+    <meta name="description" content="Samuel Zubin's portfolio showcasing projects in electronics, RF, Python, C++, and embedded systems.">
+    <meta name="color-scheme" content="dark light">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Samuel Zubin's Portfolio">
+    <meta property="og:description" content="Samuel Zubin's portfolio showcasing projects in electronics, RF, Python, C++, and embedded systems.">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <title>Samuel Zubin's Portfolio</title>
+
+    <!-- Apply saved/OS theme before first paint to avoid a flash -->
+    <script>
+        (function () {
+            var theme;
+            try { theme = localStorage.getItem('sz-theme'); } catch (e) {}
+            if (theme !== 'light' && theme !== 'dark') {
+                theme = window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+            }
+            document.documentElement.dataset.theme = theme;
+            document.documentElement.classList.add('js');
+        })();
+    </script>
 
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -25,6 +43,20 @@
     <nav class="navbar navbar-expand-md sticky-top sz-navbar" aria-label="Main navigation">
         <div class="container">
             <a href="#" class="navbar-brand sz-logo">SZ</a>
+
+            <!-- Theme toggle (sits left of the hamburger on mobile, right of the links on desktop) -->
+            <button class="sz-theme-toggle ms-auto ms-md-2 me-3 me-md-0 order-md-last"
+                    type="button"
+                    id="themeToggle"
+                    aria-label="Switch to light theme">
+                <svg class="sz-icon-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="12" cy="12" r="4"/>
+                    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+                </svg>
+                <svg class="sz-icon-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                </svg>
+            </button>
 
             <button class="navbar-toggler sz-toggler border-0 p-0"
                     type="button"
@@ -54,6 +86,19 @@
                 <span class="sz-integral">\(\displaystyle \oint\)</span><span class="sz-letter-s">S</span>amuel
                 <span class="sz-blackboard-z">\(\mathbb{Z}\)</span><span class="sz-letter-z">Z</span>ubin
             </h1>
+
+            <p class="sz-tagline">RF and embedded systems.</p>
+
+            <div class="sz-hero-actions">
+                <a href="#projects" class="sz-btn sz-btn--primary">
+                    View projects
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+                </a>
+                <a href="https://github.com/samuelzubin" target="_blank" rel="noopener noreferrer" class="sz-btn sz-btn--ghost">
+                    <ion-icon name="logo-github"></ion-icon>
+                    GitHub
+                </a>
+            </div>
         </header>
 
         <!-- Quote -->
@@ -67,22 +112,18 @@
         </section>
 
         <!-- Projects -->
-        <section id="projects" class="sz-section mb-5">
+        <section id="projects" class="sz-section">
             <h2 class="sz-section-heading" data-label="// 01">Projects</h2>
             <p class="sz-section-subtitle">Check out some of my latest projects!</p>
 
             <div class="row g-4">
 
-                <div class="col-12 col-md-6 col-lg-4">
-                    <a href="https://github.com/samuelzubin/gnu-radio-error-correction"
-                       target="_blank" rel="noopener noreferrer"
-                       class="sz-project-link d-block h-100"
-                       aria-label="Error Correction project on GitHub">
-                        <div class="sz-project-card sz-project-card--linked h-100">
-                            <h3>
-                                GNU Radio Error Correction
-                                <ion-icon name="logo-github" class="sz-card-github-icon"></ion-icon>
-                            </h3>
+                <!-- Featured project -->
+                <div class="col-12 sz-reveal">
+                    <article class="sz-project-card sz-featured">
+                        <div class="sz-featured-text">
+                            <p class="sz-featured-eyebrow">Featured project</p>
+                            <h3>GNU Radio Error Correction</h3>
                             <ul>
                                 <li class="sz-project-desc">Implemented Low Density Parity Check in GNU Radio using BPSK modulation</li>
                                 <li class="sz-project-desc">Simulated noisy channel with Gaussian noise</li>
@@ -93,12 +134,110 @@
                                 <span class="sz-tag">BPSK</span>
                                 <span class="sz-tag">LDPC</span>
                             </div>
+                            <a href="https://github.com/samuelzubin/gnu-radio-error-correction"
+                               target="_blank" rel="noopener noreferrer"
+                               class="sz-btn sz-btn--ghost sz-featured-link">
+                                <ion-icon name="logo-github"></ion-icon>
+                                View on GitHub
+                                <span class="visually-hidden">(opens in a new tab)</span>
+                            </a>
+                        </div>
+
+                        <div class="sz-featured-media">
+                            <div class="sz-media-main">
+                                <video id="demoVideo" autoplay muted loop playsinline preload="metadata"
+                                       poster="images/gnu-radio-demo-poster.jpg" width="1000" height="312"
+                                       aria-label="Demo of the GNU Radio Qt GUI comparing the raw and LDPC-decoded signals as noise voltage changes">
+                                    <source src="images/gnu-radio-demo.webm" type="video/webm">
+                                    <source src="images/gnu-radio-demo.mp4" type="video/mp4">
+                                </video>
+                            </div>
+                            <div class="sz-thumbs">
+                                <button type="button" class="sz-thumb" data-lightbox="images/gnu-radio-flowgraph.png" data-caption="GNU Radio flowgraph">
+                                    <img src="images/gnu-radio-flowgraph.png" width="1653" height="543" loading="lazy" decoding="async"
+                                         alt="GNU Radio flowgraph with LDPC encoder, noise source and decoder, and BER test blocks">
+                                    <span>Flowgraph</span>
+                                </button>
+                                <button type="button" class="sz-thumb" data-lightbox="images/gnu-radio-noise-050.png" data-caption="Noise voltage 0.50: raw vs. LDPC">
+                                    <img src="images/gnu-radio-noise-050.png" width="1773" height="550" loading="lazy" decoding="async"
+                                         alt="Qt GUI at noise voltage 0.50 showing raw and LDPC time plots">
+                                    <span>Noise 0.50</span>
+                                </button>
+                                <button type="button" class="sz-thumb" data-lightbox="images/gnu-radio-noise-0745.png" data-caption="Noise voltage 0.745: raw vs. LDPC">
+                                    <img src="images/gnu-radio-noise-0745.png" width="1776" height="557" loading="lazy" decoding="async"
+                                         alt="Qt GUI at noise voltage 0.745 showing raw and LDPC time plots">
+                                    <span>Noise 0.745</span>
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Split card: image left -->
+                <div class="col-12 sz-reveal">
+                    <a href="https://github.com/samuelzubin/custom-shell"
+                       target="_blank" rel="noopener noreferrer"
+                       class="sz-project-link d-block h-100"
+                       aria-labelledby="proj-shell-title"
+                       aria-describedby="proj-shell-desc">
+                        <div class="sz-project-card sz-project-card--linked sz-project-card--split h-100">
+                            <img class="sz-card-img" src="images/custom-shell-demo.png" width="613" height="529" loading="lazy" decoding="async"
+                                 alt="Terminal showing the hash shell welcome banner, ls, and a piped ls | grep command">
+                            <div class="sz-split-text">
+                                <h3 id="proj-shell-title">
+                                    Custom Shell
+                                    <ion-icon name="logo-github" class="sz-card-github-icon"></ion-icon>
+                                    <span class="visually-hidden">(opens in a new tab)</span>
+                                </h3>
+                                <ul id="proj-shell-desc">
+                                    <li class="sz-project-desc">HASH - hello again, shell, is a simple shell written in C</li>
+                                    <li class="sz-project-desc">Supports built-in commands, piped commands, and a compact prompt</li>
+                                </ul>
+                                <div class="sz-tag-row">
+                                    <span class="sz-tag">C</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Split card: image right -->
+                <div class="col-12 sz-reveal">
+                    <a href="https://github.com/samuelzubin/quote-bot"
+                       target="_blank" rel="noopener noreferrer"
+                       class="sz-project-link d-block h-100"
+                       aria-labelledby="proj-quotebot-title"
+                       aria-describedby="proj-quotebot-desc">
+                        <div class="sz-project-card sz-project-card--linked sz-project-card--split sz-project-card--reverse h-100">
+                            <div class="sz-card-media">
+                                <img src="images/discord-bot-profile.png" width="747" height="594" loading="lazy" decoding="async"
+                                     alt="Discord profile of the quote bot, an app account with a smiley-face avatar">
+                                <img src="images/discord-bot-reply.png" width="1180" height="88" loading="lazy" decoding="async"
+                                     alt="The bot replying in a Discord channel with a quote about focusing on what you can control">
+                            </div>
+                            <div class="sz-split-text">
+                                <h3 id="proj-quotebot-title">
+                                    Discord Quote Bot
+                                    <ion-icon name="logo-github" class="sz-card-github-icon"></ion-icon>
+                                    <span class="visually-hidden">(opens in a new tab)</span>
+                                </h3>
+                                <ul id="proj-quotebot-desc">
+                                    <li class="sz-project-desc">The bot fetches quotes using a web scraper and periodically sends a random one in a discord channel</li>
+                                    <li class="sz-project-desc">Used the BeautifulSoup python library to create a web scraper</li>
+                                    <li class="sz-project-desc">Connects to discord servers using the Discord API</li>
+                                </ul>
+                                <div class="sz-tag-row">
+                                    <span class="sz-tag">Python</span>
+                                    <span class="sz-tag">BeautifulSoup</span>
+                                    <span class="sz-tag">Discord API</span>
+                                </div>
+                            </div>
                         </div>
                     </a>
                 </div>
 
                 <!-- Card with no link -->
-                <div class="col-12 col-md-6 col-lg-4">
+                <div class="col-12 col-md-6 sz-reveal">
                     <div class="sz-project-card h-100">
                         <h3>Self-Balancing Robot</h3>
                         <ul>
@@ -113,17 +252,19 @@
                     </div>
                 </div>
 
-                <div class="col-12 col-md-6 col-lg-4">
+                <div class="col-12 col-md-6 sz-reveal">
                     <a href="https://github.com/samuelzubin/DriverDelineation"
                        target="_blank" rel="noopener noreferrer"
                        class="sz-project-link d-block h-100"
-                       aria-label="Driver Delineation project on GitHub">
+                       aria-labelledby="proj-driver-title"
+                       aria-describedby="proj-driver-desc">
                         <div class="sz-project-card sz-project-card--linked h-100">
-                            <h3>
+                            <h3 id="proj-driver-title">
                                 Driver Delineation
                                 <ion-icon name="logo-github" class="sz-card-github-icon"></ion-icon>
+                                <span class="visually-hidden">(opens in a new tab)</span>
                             </h3>
-                            <ul>
+                            <ul id="proj-driver-desc">
                                 <li class="sz-project-desc">Worked with a team to create two models that analyze the most useful factors to predict driver prospects for Uber</li>
                                 <li class="sz-project-desc">Implemented a decision tree using Scikit-learn</li>
                             </ul>
@@ -135,36 +276,14 @@
                         </div>
                     </a>
                 </div>
-                <div class="col-12 col-md-6 col-lg-4">
-                    <a href="https://github.com/samuelzubin/quote-bot"
-                       target="_blank" rel="noopener noreferrer"
-                       class="sz-project-link d-block h-100"
-                       aria-label="Discord Quote Bot project on GitHub">
-                        <div class="sz-project-card sz-project-card--linked h-100">
-                            <h3>
-                                Discord Quote Bot
-                                <ion-icon name="logo-github" class="sz-card-github-icon"></ion-icon>
-                            </h3>
-                            <ul>
-                                <li class="sz-project-desc">The bot fetches quotes using a web scraper and periodically sends a random one in a discord channel</li>
-                                <li class="sz-project-desc">Used the BeautifulSoup python library to create a web scraper</li>
-                                <li class="sz-project-desc">Connects to discord servers using the Discord API</li>
-                            </ul>
-                            <div class="sz-tag-row">
-                                <span class="sz-tag">Python</span>
-                                <span class="sz-tag">BeautifulSoup</span>
-                                <span class="sz-tag">Discord API</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
 
             </div>
         </section>
 
         <!-- About -->
-        <section id="about" class="sz-section mb-5">
-            <div class="sz-about-card">
+        <section id="about" class="sz-section">
+            <p class="sz-eyebrow">// 02</p>
+            <div class="sz-about-card sz-reveal">
                 <div class="sz-about-header">
                     <h2 class="sz-about-intro">Hello, World!</h2>
                 </div>
@@ -175,36 +294,53 @@
                     </div>
                     <div class="col-12 col-md-4 sz-about-item">
                         <h3>Skills</h3>
-                        <p class="sz-description">Python, C++, Verilog, ESP32, Circuit Design, HTML/CSS</p>
+                        <p class="sz-description">GNU Radio, Python, C/C++, Verilog, Raspberry Pi, ESP32, Circuit Design, HTML/CSS</p>
                     </div>
                     <div class="col-12 col-md-4 sz-about-item">
                         <h3>Interests</h3>
-                        <p class="sz-description">Embedded Systems, Wireless Communications, Calculus, Ultimate Frisbee, Rubik's Cubes</p>
+                        <p class="sz-description">Wireless Communications, Embedded Systems, Calculus, Ultimate Frisbee, Rubik's Cubes</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Social -->
-        <section id="social" class="sz-section mb-5">
-            <h2 class="sz-section-heading" data-label="// 02">Social</h2>
-            <div class="d-flex gap-3 mt-3">
-                <a href="https://www.linkedin.com/in/samuel-zubin-b21580379/"
-                   target="_blank" rel="noopener noreferrer"
-                   class="sz-social-link"
-                   aria-label="Samuel Zubin on LinkedIn">
-                    <ion-icon name="logo-linkedin" class="sz-social-icon"></ion-icon>
-                </a>
+        <section id="social" class="sz-section">
+            <h2 class="sz-section-heading" data-label="// 03">Social</h2>
+            <p class="sz-section-subtitle">Find me elsewhere online.</p>
+            <div class="d-flex flex-wrap gap-3">
                 <a href="https://github.com/samuelzubin"
                    target="_blank" rel="noopener noreferrer"
-                   class="sz-social-link"
-                   aria-label="Samuel Zubin on GitHub">
+                   class="sz-social-link">
                     <ion-icon name="logo-github" class="sz-social-icon"></ion-icon>
+                    <span>GitHub</span>
+                    <span class="visually-hidden">(opens in a new tab)</span>
+                </a>
+                <a href="https://www.linkedin.com/in/samuel-zubin-b21580379/"
+                   target="_blank" rel="noopener noreferrer"
+                   class="sz-social-link">
+                    <ion-icon name="logo-linkedin" class="sz-social-icon"></ion-icon>
+                    <span>LinkedIn</span>
+                    <span class="visually-hidden">(opens in a new tab)</span>
                 </a>
             </div>
         </section>
 
     </main>
+
+    <footer class="sz-footer">
+        <div class="container d-flex flex-wrap justify-content-between align-items-center gap-2">
+            <span>&copy; <span id="year">2026</span> Samuel Zubin</span>
+            <a href="#" class="sz-backtotop">Back to top &uarr;</a>
+        </div>
+    </footer>
+
+    <!-- Image lightbox -->
+    <dialog id="lightbox" class="sz-lightbox" aria-label="Image viewer">
+        <form method="dialog"><button class="sz-lightbox-close" aria-label="Close image viewer">&times;</button></form>
+        <img id="lightboxImg" alt="">
+        <p id="lightboxCaption"></p>
+    </dialog>
 
     <!-- Katex -->
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
